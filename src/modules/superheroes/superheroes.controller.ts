@@ -1,6 +1,6 @@
 import { BadRequestException, Body, Controller, Get, InternalServerErrorException, Post } from '@nestjs/common';
 import { SuperheroesService } from './superheroes.service';
-import { CreateSuperHeroDTO } from './dto/superhero.dto';
+import { CreateSuperHeroDTO } from './dto/create-superhero.dto';
 import { Superhero } from './entities/superhero.entity';
 
 @Controller('superheroes')
