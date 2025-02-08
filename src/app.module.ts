@@ -1,11 +1,13 @@
-import { Module } from '@nestjs/common';
-import { AppController } from './app.controller';
-import { AppService } from './app.service';
+import { MiddlewareConsumer, Module, NestModule, Type } from '@nestjs/common';
 import { SuperheroesModule } from './modules/superheroes/superheroes.module';
+import { LoggerMiddleware } from './common/middleware/logger.middleware';
 
 @Module({
-  imports: [SuperheroesModule],
-  controllers: [AppController],
-  providers: [AppService],
+  imports: [SuperheroesModule]
 })
-export class AppModule {}
+export class AppModule implements NestModule {
+  // The configure method is used to apply the LoggerMiddleware to all routes in the application.
+  configure(consumer: MiddlewareConsumer) {
+    consumer.apply(LoggerMiddleware).forRoutes('*');
+  }
+}
