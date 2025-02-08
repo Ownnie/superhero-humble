@@ -4,15 +4,11 @@ import { Superhero } from './entities/superhero.entity';
 @Injectable()
 export class SuperheroesService {
     private superheroes: Superhero[] = [];
-    private idCounter = 1;
 
     //Create a new Superhero with the given data
     createSuperhero(data: Superhero): Superhero {
         const newSuperhero: Superhero = {
-            id: this.idCounter++,
-            name: data.name,
-            superpower: data.superpower,
-            humilityScore: data.humilityScore
+            ...data
         };
 
         this.superheroes.push(newSuperhero);
