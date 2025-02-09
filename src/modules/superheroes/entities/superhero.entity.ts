@@ -1,5 +1,5 @@
 export class Superhero {
-    id: number;
+    id: string;
     name: string;
     superpower: string;
     humilityScore: number;
